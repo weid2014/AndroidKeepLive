@@ -12,6 +12,10 @@
     "type": "git",
     "url": "git+https://github.com/weid2014/AndroidKeepLive"
   },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
