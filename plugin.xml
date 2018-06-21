@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="keeplive-plugin" version="1.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>keeplive-plugin</name>
+    <js-module name="keeplive-plugin" src="www/keeplive-plugin.js">
+        <clobbers target="KeepLivePlugin" />
+    </js-module>
+	
+	<!--添加安卓平台-->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">  
+			<!--js调用的对象名-->
+            <feature name="KeepLivePlugin">
+				<!-- value=java类名全路径--> 
+                <param name="android-package" value="com.cesc.ewater.cordovaPlugin.KeepLivePlugin"/> 
+            </feature>  
+        </config-file>  
+		<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+		<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+		<!-- 必需的权限 -->
+		<uses-permission android:name="android.permission.INTERNET" />
+		<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+		<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+		<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+		<uses-permission android:name="android.permission.WAKE_LOCK" />
+        <!-- 3.2.0版本增加 -->
+        <uses-permission android:name="android.permission.BLUETOOTH"/>
+        <config-file parent="/*" target="AndroidManifest.xml">
+
+        </config-file>
+		<!-- src:java源文件的路径， target-dir:插件安装好后，源文件的位置，要和上面的包名对应 -->
+		<!--跟插件所有有关的类文件，layout文件等等都要一一配置在下方-->
+        <source-file src="src/android/KeepLivePlugin.java" target-dir="src/com/cesc/ewater/cordovaPlugin" />
+		<source-file src="src/android/DaemonService.java" target-dir="src/com/cesc/ewater/cordovaPlugin" />  
+		<source-file src="src/android/CancelNoticeService.java" target-dir="src/com/cesc/ewater/cordovaPlugin" />
+		    
+    </platform> 
+</plugin>
